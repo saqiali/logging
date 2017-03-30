@@ -1,0 +1,12 @@
+/var/log/cpp/CPP.log {
+    daily
+    create
+    rotate 15
+    compress
+    dateext
+    sharedscripts
+    postrotate
+       cd /srv/www/ccservices/current ; ./CPPCommand.sh restart
+    endscript
+
+}
