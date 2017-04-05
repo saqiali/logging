@@ -1,0 +1,8 @@
+/var/log/tomcat8/*.log {
+  daily
+  rotate 15
+  create 644 tomcat tomcat
+  missingok
+  compress
+  copytruncate
+}

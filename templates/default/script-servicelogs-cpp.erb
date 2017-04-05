@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+#
+echo ""
+printf '\e[1;37m%-6s\e[m\n' "Backup started : `date`"
+echo ""
+echo "beginning backup of files created 14 days ago : `date +"%Y-%m-%d" -d "14 days ago"`"
+echo ""
+
+SERVER=`hostname`
+SAVE_DIR="/var/log/cpp"
+SERVICE="CPP"
+S3_URI="logs-us-west1/testing/${SERVER}"
+
+#find oldest of 14 files and upload it to aws
+#find ${SAVE_DIR} -maxdepth 1 -mtime 13 -type f -name 'CPP*.'|sed 's#.*/##'|\
+#temp change to mtime 14
+find ${SAVE_DIR} -maxdepth 1 -mtime 14 -type f \( -name 'CPP.*'  \)|sed 's#.*/##'|\
+        while IFS= read -r NAME; \
+        do aws s3 cp ${SAVE_DIR}/${NAME} s3://${S3_URI}/`date +"%Y-%m-%d" -d "14 days ago"`/${SERVER}_${SERVICE}_${NAME} --storage-class STANDARD_IA; done
+
+if [ "$?" -ne "0" ]; then
+        echo "Upload to AWS failed"
+        else printf '\e[1;37m%-6s\e[m\n' "Backup for finished on: `date`"
+        exit 1
+fi
+echo ""

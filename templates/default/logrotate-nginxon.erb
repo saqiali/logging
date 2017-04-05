@@ -1,0 +1,13 @@
+/usr/share/nginx/on {
+    create 0644 nginx root
+    daily
+    rotate 15
+    missingok
+    notifempty
+    dateext
+    compress
+    sharedscripts
+    postrotate
+        /etc/init.d/nginx reopen_logs
+    endscript
+}
