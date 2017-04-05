@@ -57,7 +57,7 @@ when 'ubuntu'
     action :install
   end
   
-when 'centos' , 'amazon'
+when 'redhat', 'centos', 'fedora', 'amazon'
    package 'aws-cli' do
         action :install
       end
