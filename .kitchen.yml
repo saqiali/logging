@@ -19,6 +19,7 @@ suites:
       #- recipe[testing::logrotate-supervisord]
       #- recipe[testing::logrotate-solr]
       #- recipe[testing::logrotate-tomcat]
-      - recipe[testing::logrotate-httpd]
+      #- recipe[testing::logrotate-httpd]
+      #- recipe[testing::logrotate-nodejs]
 
     attributes:

@@ -48,6 +48,13 @@ bash 'append_to_rsyslog.d' do
   notifies :restart, 'service[rsyslog]'
 end
 
+#installing/upgrading aws cli version to latest
+
+package 'aws-cli' do
+  action :install
+end
+
+
 
 
 
