@@ -13,7 +13,12 @@ suites:
     run_list:
       #- recipe[testing::default]
       - recipe[testing::default]
-      - recipe[testing::logrotate-cpp]
       - recipe[testing::logrotate-general]
+      #- recipe[testing::logrotate-cpp]
+      #- recipe[testing::logrotate-nginx]
+      #- recipe[testing::logrotate-supervisord]
+      #- recipe[testing::logrotate-solr]
+      #- recipe[testing::logrotate-tomcat]
+      - recipe[testing::logrotate-httpd]
 
     attributes:

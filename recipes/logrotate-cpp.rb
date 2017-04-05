@@ -6,4 +6,6 @@ template '/etc/logrotate.d/cpp' do
 
 end
 
-
+template '/etc/s3/s3_upload_servicelogs.sh' do
+  source 'script-servicelogs-cpp.erb'
+end

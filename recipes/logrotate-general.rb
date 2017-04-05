@@ -56,4 +56,10 @@ cron 'systemlogs' do
   command '/etc/s3/s3_upload_systemlogs.sh &>> /var/log/s3_backup/s3_backup.log'
 end
 
+cron 'servicelogs' do
+  hour '2'
+  minute '0'
+  command '/etc/s3/s3_upload_servicelogs.sh &>> /var/log/s3_backup/s3_backup.log'
+end
+
 
