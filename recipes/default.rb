@@ -50,11 +50,19 @@ end
 
 #installing/upgrading aws cli version to latest
 
-package 'aws-cli' do
-  action :install
+case node[platform]
+
+when 'ubuntu'
+  package 'awscli' do
+    action :install
+  end
+  
+when 'centos' , 'amazon'
+   package 'aws-cli' do
+        action :install
+      end
+         
 end
-
-
 
 
 
